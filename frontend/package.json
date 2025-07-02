@@ -1,0 +1,23 @@
+{
+  "name": "stonely-frontend",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Frontend for Stonely personal finance app",
+  "main": "src/main.jsx",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.23.0",
+    "axios": "^1.6.8",
+    "styled-components": "^6.1.8"
+  },
+  "devDependencies": {
+    "vite": "^5.2.0",
+    "tailwindcss": "^3.4.3"
+  }
+}
