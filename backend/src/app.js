@@ -21,6 +21,10 @@ app.use(helmet());
 const healthRoutes = require('./routes/health');
 app.use('/api', healthRoutes);
 
+// import and use auth routes
+const authRoutes = require('./routes/auth');
+app.use('/api/auth', authRoutes);
+
 // define base route
 app.get('/', (req, res) => {
   res.send('api is running');
