@@ -15,8 +15,15 @@ async function findUserByEmail(email) {
   return rows[0]; // return the first user found
 }
 
+// validate a plain password against a hashed password
+async function validatePassword(plainPassword, hashedPassword) {
+  const bcrypt = require('bcryptjs');
+  return await bcrypt.compare(plainPassword, hashedPassword);
+}
+
 // export the functions to be used in other files
 module.exports = {
   createUser,
   findUserByEmail,
+  validatePassword,
 };

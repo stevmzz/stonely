@@ -1,14 +1,30 @@
-// auth controller for register and login endpoints
-const bcrypt = require('bcryptjs');
-const { createUser, findUserByEmail } = require('../models/user');
+// import user model functions
+const { createUser, findUserByEmail, validatePassword } = require('../models/user');
+
+// import validators from utils
+const { isValidEmail, isValidPassword, isValidFullName } = require('../utils/validators');
 
 // register a new user
 async function register(req, res, next) {
   try {
     // validate request body
     const { email, password, full_name } = req.body;
+
+    // check for missing fields
     if (!email || !password || !full_name) {
       return res.status(400).json({ success: false, message: 'missing fields' });
+    }
+    // validate email format
+    if (!isValidEmail(email)) {
+      return res.status(400).json({ success: false, message: 'invalid email format' });
+    }
+    // validate password length
+    if (!isValidPassword(password)) {
+      return res.status(400).json({ success: false, message: 'password must be at least 6 characters' });
+    }
+    // validate full name
+    if (!isValidFullName(full_name)) {
+      return res.status(400).json({ success: false, message: 'invalid full name' });
     }
 
     // check if user already exists
@@ -34,8 +50,18 @@ async function login(req, res, next) {
   try {
     // validate request body
     const { email, password } = req.body;
+
+    // check for missing fields
     if (!email || !password) {
       return res.status(400).json({ success: false, message: 'missing fields' });
+    }
+    // validate email format
+    if (!isValidEmail(email)) {
+      return res.status(400).json({ success: false, message: 'invalid email format' });
+    }
+    // validate password length
+    if (!isValidPassword(password)) {
+      return res.status(400).json({ success: false, message: 'password must be at least 6 characters' });
     }
 
     // find user by email
@@ -44,14 +70,15 @@ async function login(req, res, next) {
       return res.status(401).json({ success: false, message: 'invalid credentials' });
     }
 
-    // compare password with bcryptjs
-    const isMatch = await bcrypt.compare(password, user.password_hash);
+    // validate password using model method
+    const isMatch = await validatePassword(password, user.password_hash);
     if (!isMatch) {
       return res.status(401).json({ success: false, message: 'invalid credentials' });
     }
-    
+
     // login successful
     res.json({ success: true, userId: user.id });
+    
   } catch (err) {
     next(err);
   }
