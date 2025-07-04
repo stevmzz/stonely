@@ -4,6 +4,9 @@ const { createUser, findUserByEmail, validatePassword } = require('../models/use
 // import validators from utils
 const { isValidEmail, isValidPassword, isValidFullName } = require('../utils/validators');
 
+// 
+const jwt = require('jsonwebtoken');
+
 // register a new user
 async function register(req, res, next) {
   try {
@@ -76,8 +79,15 @@ async function login(req, res, next) {
       return res.status(401).json({ success: false, message: 'invalid credentials' });
     }
 
+    // generate JWT token
+    const token = jwt.sign(
+      { userId: user.id, email: user.email },
+      process.env.JWT_SECRET,
+      { expiresIn: '1h' }
+    );
+
     // login successful
-    res.json({ success: true, userId: user.id });
+    res.json({ success: true, token });
     
   } catch (err) {
     next(err);
