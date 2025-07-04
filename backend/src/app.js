@@ -25,6 +25,10 @@ app.use('/api', healthRoutes);
 const authRoutes = require('./routes/auth');
 app.use('/api/auth', authRoutes);
 
+// import and use user routes
+const userRoutes = require('./routes/user');
+app.use('/api/user', userRoutes);
+
 // define base route
 app.get('/', (req, res) => {
   res.send('api is running');

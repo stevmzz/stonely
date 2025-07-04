@@ -1,6 +1,9 @@
 // import user model functions
 const { createUser, findUserByEmail, validatePassword } = require('../models/user');
 
+// import bcryptjs for password hashing
+const bcrypt = require('bcryptjs');
+
 // import validators from utils
 const { isValidEmail, isValidPassword, isValidFullName } = require('../utils/validators');
 
