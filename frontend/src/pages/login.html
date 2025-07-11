@@ -7,6 +7,9 @@
     <link rel="stylesheet" href="../styles/styles.css"/>
     <link rel="stylesheet" href="../styles/login.css"/>
     <link href="https://fonts.googleapis.com/css2?family=CMU+Serif&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <script src="../js/api.js"></script>
+    <script src="../js/auth/login.js"></script>
 </head>
 <body>
     <div class="container">
@@ -19,23 +22,36 @@
 
         <div class="rightSection">
             <img src="../assets/images/stonely-logo.png" alt="Stonely Logo" class="logo">
-            <h2>Welcome to Stonely</h2>
+            <h2>Glad to see you again!</h2>
 
-            <form>
+            <form id="loginForm">
                 <label for="username">Username or Email</label>
                 <input type="text" id="username" name="username" required>
 
                 <label for="password">Password</label>
                 <input type="password" id="password" name="password" required>
 
-                <a href="#">Forgot Password?</a>
+                <a href="recover.html">Forgot Password?</a>
 
                 <button type="submit">Login</button>
             </form>
 
             <div class="divider">or</div>
-            <button>Sign in with Google</button>
-            <p>Don't have an account? <a href="#">Sign up</a></p>
+            <div class="social-buttons">
+                
+                <button class="social-btn google" aria-label="Sign in with Google">
+                    <i class="fab fa-google"></i>
+                </button>
+                <button class="social-btn facebook" aria-label="Sign in with Facebook">
+                    <i class="fab fa-facebook-f"></i>
+                </button>
+                <button class="social-btn linkedin" aria-label="Sign in with LinkedIn">
+                    <i class="fab fa-linkedin-in"></i>
+                </button>
+
+            </div>
+
+            <p>Don't have an account? <a href="Register.html">Sign up</a></p>
 
         </div>
 
