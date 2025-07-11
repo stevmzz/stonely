@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>login</title>
+    <link rel="stylesheet" href="../styles/styles.css"/>
+    <link rel="stylesheet" href="../styles/login.css"/>
+    <link href="https://fonts.googleapis.com/css2?family=CMU+Serif&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <script src="../js/api.js"></script>
+    <script src="../js/auth/login.js"></script>
+</head>
+<body>
+    <div class="container">
+
+        <div class="leftSection">
+            <h1>Take control of your money.</h1>
+            <p>Track your expenses, manage your income, and make smarter financial decisions — all in one place.</p>
+            <p><strong>Simple. Secure. Free.</strong></p>
+        </div>
+
+        <div class="rightSection">
+            <img src="../assets/images/stonely-logo.png" alt="Stonely Logo" class="logo">
+            <h2>Glad to see you again!</h2>
+
+            <form id="loginForm">
+                <label for="username">Username or Email</label>
+                <input type="text" id="username" name="username" required>
+
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required>
+
+                <a href="recover.html">Forgot Password?</a>
+
+                <button type="submit">Login</button>
+            </form>
+
+            <div class="divider">or</div>
+            <div class="social-buttons">
+                
+                <button class="social-btn google" aria-label="Sign in with Google">
+                    <i class="fab fa-google"></i>
+                </button>
+                <button class="social-btn facebook" aria-label="Sign in with Facebook">
+                    <i class="fab fa-facebook-f"></i>
+                </button>
+                <button class="social-btn linkedin" aria-label="Sign in with LinkedIn">
+                    <i class="fab fa-linkedin-in"></i>
+                </button>
+
+            </div>
+
+            <p>Don't have an account? <a href="Register.html">Sign up</a></p>
+
+        </div>
+
+    </div>
+</body>
+</html>
